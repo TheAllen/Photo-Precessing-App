@@ -34,6 +34,10 @@ HEADERS += \
 FORMS += \
         mainwindow.ui
 
+INCLUDEPATH += C:\\Opencv\\opencv\\build\\include
+
+#LIBS += -LC:\\Opencv\\opencv\\build\\lib\\debug
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
