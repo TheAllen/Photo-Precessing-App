@@ -24,6 +24,11 @@ private:
     bool status;
     bool capturing;
 
+    bool binaryThresholdEnable;
+    int binaryThreshold;
+
+    void process();
+
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -35,6 +40,8 @@ public slots:
     void receiveGrabFrame();
     void receiveSetup(const int device);
     void receiveToggleStream();
+
+    void receiveEnableBinaryThreshold();
 
 private:
     Ui::MainWindow *ui;
