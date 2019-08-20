@@ -5,6 +5,10 @@
 #include <QObject>
 #include <QImage>
 
+#include <QMainWindow>
+#include <QFileDialog>
+#include <QLabel>
+
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
@@ -17,9 +21,9 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 private:
-    cv::Mat frameOriginal;
-    cv::Mat frameProcessed; //More efficient to work with gray scale
-    cv::VideoCapture* cap;
+//    cv::Mat frameOriginal;
+//    cv::Mat frameProcessed; //More efficient to work with gray scale
+//    cv::VideoCapture* cap;
 
     bool status;
     bool capturing;
@@ -29,6 +33,9 @@ private:
 
     void process();
 
+protected:
+    void changeEvent(QEvent* e);
+
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -37,11 +44,12 @@ signals:
     void sendFrame(QImage frameProcessed);
 
 public slots:
-    void receiveGrabFrame();
-    void receiveSetup(const int device);
-    void receiveToggleStream();
 
-    void receiveEnableBinaryThreshold();
+
+private slots:
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
